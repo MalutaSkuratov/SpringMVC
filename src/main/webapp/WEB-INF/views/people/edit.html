@@ -16,10 +16,10 @@
     <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age error</div>
     <br>
     <label for="email"> Enter email: </label>
-    <input type="email" th:field="*{email}" id="email"/>
+    <input type="text" th:field="*{email}" id="email"/>
     <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
     <br><br>
-    <input type="submit" value="Update"/>
+    <input type="submit" value="Update!"/>
 </form>
 
 </body>
