@@ -37,7 +37,7 @@ public class PersonDAO {
 
     public void save(Person person){
 
-        jdbcTemplate.update("INSERT INTO Person VALUES(2, ?, ?, ?)", person.getName(), person.getAge(), // Добавить инкремент
+        jdbcTemplate.update("INSERT INTO Person(name ,age, email) VALUES(?, ?, ?)", person.getName(), person.getAge(), // Добавить инкремент
                 person.getEmail());
     }
 
@@ -53,7 +53,7 @@ public class PersonDAO {
     ////////////// Тест производительности пакетной вставки
 
     public void testMultipleUpdate(){
-        List<Person> people = create100People();
+        List<Person> people = create5People();
 
         long before = System.currentTimeMillis();
 
@@ -68,7 +68,7 @@ public class PersonDAO {
     }
 
     public void testBatchUpdate(){
-        List<Person>people = create100People();
+        List<Person>people = create5People();
 
         long before = System.currentTimeMillis();
 
@@ -94,9 +94,9 @@ public class PersonDAO {
     }
 
 
-    private List<Person> create100People() {
+    private List<Person> create5People() {
         List<Person>people = new ArrayList<>();
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 5; i++)
             people.add(new Person(i, "Name" + i, 21, "test" + i + "@mail.com"));
 
         return people;
